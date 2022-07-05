@@ -26,6 +26,11 @@ public class MyApi {
         return "大家好！";
     }
 
+    @GetMapping("/test")
+    public String test(){
+        return "The background part works functionally OK!";
+    }
+
     @GetMapping("/t1")
     public Result test1(int num){
         if(num%2==0){
