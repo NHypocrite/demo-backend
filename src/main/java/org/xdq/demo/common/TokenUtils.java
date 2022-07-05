@@ -1,8 +1,11 @@
 package org.xdq.demo.common;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.util.StringUtils;
 
@@ -57,6 +60,24 @@ public class TokenUtils {
         }
 
         return new TokenUser(userId,userName);
+
+    }
+
+
+    public static TokenUser verify(String clientToken){
+        TokenUser tokenUser = getTokenUser(clientToken);
+
+        //获取令牌的验证器
+        JWTVerifier verifier =  JWT.require(Algorithm.HMAC256(SECRET)).build();
+
+        try {
+            verifier.verify(clientToken);
+            return tokenUser;
+        } catch (TokenExpiredException e) {
+            throw new TokenException("令牌过期");
+        } catch(Exception e){
+            throw new TokenException("非法令牌");
+        }
 
     }
 
