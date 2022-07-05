@@ -12,9 +12,6 @@ public class Result {
     public static final int CODE_ERR_UNLOGIN = 520;
 
 
-
-
-
     public static Result OK(){
         return new Result(true,CODE_OK,null,null);
     }
@@ -46,7 +43,7 @@ public class Result {
     private String message;// 概述信息
     private Object data;//服务端向前端回送的数据
 
-    private Result(boolean success, int code, String message, Object data) {
+    public Result(boolean success, int code, String message, Object data) {
         this.success = success;
         this.code = code;
         this.message = message;
