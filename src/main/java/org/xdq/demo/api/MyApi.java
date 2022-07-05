@@ -26,6 +26,7 @@ public class MyApi {
         return "大家好！";
     }
 
+    // 测试后端是否能够正常工作
     @GetMapping("/test")
     public String test(){
         return "The background part works functionally OK!";
