@@ -11,6 +11,9 @@ import org.xdq.demo.user.dao.UserLoginDao;
 import org.xdq.demo.user.dto.LoginUserDto;
 import org.xdq.demo.user.model.User;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/user")
 @Transactional //事务声明，表示该类的所有方法都是事务性的，即方法中的所有访问数据库操作构成了一个整体事务，具有原子性
@@ -37,5 +40,18 @@ public class UserLoginApi {
     public Result getTokenUser(@RequestHeader(DemoConstants.HEADER_PARAM_TOKEN)  String token){
         TokenUser tokenUser = TokenUtils.getTokenUser(token);
         return Result.OK(tokenUser);
+    }
+
+    @GetMapping("/is-login")
+    public Result isLogin(@RequestHeader(DemoConstants.HEADER_PARAM_TOKEN)  String token){
+        Map<String,Boolean> map  = new HashMap<>();
+        try {
+            TokenUtils.getTokenUser(token);
+            map.put("logined", true);
+
+        } catch (Exception e) {
+            map.put("logined", false);
+        }
+        return Result.OK(map);
     }
 }

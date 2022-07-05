@@ -54,6 +54,7 @@ public class MyApi {
                 DemoConstants.UPLOAD_DIR+"/"+filename);
 
         byte[] b = new byte[1024*1024];
+        // 不用管这个注释
         int len = -1;//每次从流中读取的字节数
 
         while((len = in.read(b))!= -1 ){
