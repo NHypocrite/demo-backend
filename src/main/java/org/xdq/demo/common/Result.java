@@ -43,7 +43,7 @@ public class Result {
     private String message;// 概述信息
     private Object data;//服务端向前端回送的数据
 
-    public Result(boolean success, int code, String message, Object data) {
+    private Result(boolean success, int code, String message, Object data) {
         this.success = success;
         this.code = code;
         this.message = message;
