@@ -40,7 +40,7 @@ public class TokenFilter implements Filter {
 
         String path = req.getServletPath();//获取请求路径
 
-        if("/user/login".equals(path) || "/user/register".equals(path)){
+        if("/user/login".equals(path) || "/user/register".equals(path)  || path.startsWith("/blob/")){
             chain.doFilter(request,response);//放行通过
 
             return;

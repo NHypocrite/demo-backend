@@ -18,7 +18,7 @@ public class TokenUtils {
     private static final String CLARM_NAME_USERNAME = "CLARM_NAME_USERNAME";
     private static final String SECRET = "asdfgh";
 
-    private static int expiredTime = 200;//令牌过期时间，单位s
+    private static int expiredTime = 60*1000;//令牌过期时间，单位s
 
     /**
      * 将用户信息封装为一个Token（令牌字符串）
