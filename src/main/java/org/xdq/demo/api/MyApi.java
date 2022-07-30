@@ -71,6 +71,7 @@ public class MyApi {
         in.close();
     }
 
-
+    // log
+    // 7.8.1: nothing
 
 }
