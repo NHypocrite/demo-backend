@@ -82,4 +82,16 @@
 
 
 
+    <build>
+        <plugins>
+            <!-- 引入此插件,用于打包时生成可执行jar文件  -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
 </project>
